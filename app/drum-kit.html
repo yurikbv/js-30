@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Title</title>
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:image" content="path/to/image.jpg">
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+
+  <meta name="theme-color" content="#000">
+  <meta name="msapplication-navbutton-color" content="#000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+  <link rel="stylesheet" href="css/style.min.css" type="text/css">
+  <link rel="preload" href="fonts/RobotoBold/RobotoBold.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="fonts/RobotoRegular/RobotoRegular.woff" as="font" type="font/woff" crossorigin>
+</head>
+
+<body class="drum-kit">
+<div class="keys">
+  <div  data-key="KeyA" class="key">
+    <kbd>A</kbd>
+    <span class="sound">clap</span>
+  </div>
+  <div  data-key="KeyS" class="key">
+    <kbd>S</kbd>
+    <span class="sound">hihat</span>
+  </div>
+  <div  data-key="KeyD" class="key">
+    <kbd>D</kbd>
+    <span class="sound">kick</span>
+  </div>
+  <div  data-key="KeyF" class="key">
+    <kbd>F</kbd>
+    <span class="sound">openhat</span>
+  </div>
+  <div  data-key="KeyG" class="key">
+    <kbd>G</kbd>
+    <span class="sound">boom</span>
+  </div>
+  <div  data-key="KeyH" class="key">
+    <kbd>H</kbd>
+    <span class="sound">ride</span>
+  </div>
+  <div  data-key="KeyJ" class="key">
+    <kbd>J</kbd>
+    <span class="sound">snare</span>
+  </div>
+  <div  data-key="KeyK" class="key">
+    <kbd>K</kbd>
+    <span class="sound">tom</span>
+  </div>
+  <div  data-key="KeyL" class="key">
+    <kbd>L</kbd>
+    <span class="sound">tink</span>
+  </div>
+</div>
+<audio src="sounds/clap.wav" data-key="KeyA"></audio>
+<audio src="sounds/hihat.wav" data-key="KeyS"></audio>
+<audio src="sounds/kick.wav" data-key="KeyD"></audio>
+<audio src="sounds/openhat.wav" data-key="KeyF"></audio>
+<audio src="sounds/boom.wav" data-key="KeyG"></audio>
+<audio src="sounds/ride.wav" data-key="KeyH"></audio>
+<audio src="sounds/snare.wav" data-key="KeyJ"></audio>
+<audio src="sounds/tom.wav" data-key="KeyK"></audio>
+<audio src="sounds/tink.wav" data-key="KeyL"></audio>
+</body>
+<script>
+
+  function playSound(event) {
+    const audio = document.querySelector(`audio[data-key=${event.code}]`);
+    const key = document.querySelector(`.key[data-key=${event.code}]`);
+    audio.currentTime = 0;
+    audio.play();
+    key.classList.add('playing');
+  }
+
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('playing')
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend',removeTransition));
+
+  document.addEventListener('keydown',playSound);
+
+</script>
+</html>

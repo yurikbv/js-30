@@ -1,0 +1,42 @@
+html, body{
+  height: 100%;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+body{
+  font-family: $font-default;
+  font-size: 16px;
+  color: $color-default;
+  line-height: 1.65;
+  min-width: 320px;
+  position: relative;
+  overflow-x: hidden;
+  opacity: 1;
+}
+
+section {
+	position: relative;
+}
+
+.visually-hidden:not(:focus):not(:active),.svg-placeholder {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
