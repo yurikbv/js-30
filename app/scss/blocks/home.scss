@@ -1,0 +1,24 @@
+.home {
+  text-align: center;
+  background: #eee;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.posts_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  article {
+    flex-basis: 300px;
+    border: 1px solid #193549;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px #193549;
+    background: #3137ff;
+    a {
+      color: #EFEFEF;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}
